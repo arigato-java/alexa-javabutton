@@ -1,0 +1,17 @@
+{
+  "name": "alexa-javabutton",
+  "version": "2038.0.0",
+  "description": "Lambda function for Javabuttonized Alexa",
+  "main": "java.js",
+  "scripts": {
+    "test": "/bin/true"
+  },
+  "keywords": [
+    "Javabutton"
+  ],
+  "author": "The Java Brigade",
+  "license": "Glide",
+  "dependencies": {
+    "alexa-sdk": "^1.0.19"
+  }
+}
