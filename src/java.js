@@ -3,7 +3,8 @@ const Alexa=require('alexa-sdk');
 
 var handlers={
 	'LaunchRequest':function(){
-		this.emit('MyIntent');
+		this.response.speak('30億のデバイスで走るジャバ')
+		this.emit(':responseReady');
 	},
 	'MyIntent':function(){
 		// 呼びかけで「あなジャバ」はプレイヤーが発言している
@@ -16,8 +17,7 @@ exports.handler=function(event,context,callback){
 
 	//alexa.appId='';
 	//alexa.dynamoDBTableName=''; // session mgmt
-	
+
 	alexa.registerHandlers(handlers);
 	alexa.execute();
 };
-
