@@ -14,11 +14,14 @@
         "samples": []
       },
       {
-        "name": "MyIntent",
+        "name": "JavaIntent",
         "samples": [
-          "あなたとジャバ"
+          "ジャバ",
+	  "{Javacount} 回ジャバ"
         ],
-        "slots": []
+        "slots": [
+		{"name":"Javacount", "type":"AMAZON.NUMBER"}
+	]
       }
     ],
     "invocationName": "ジャバボタン"
