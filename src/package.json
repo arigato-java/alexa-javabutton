@@ -13,5 +13,6 @@
   "license": "Glide",
   "dependencies": {
     "alexa-sdk": "^1.0.19"
-  }
+  },
+  "repository":"https://github.com/arigato-java/alexa-javabutton.git"
 }
