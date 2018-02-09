@@ -43,6 +43,14 @@ var handlers={
 		this.response.speak(res);
 		this.emit(':responseReady');
 	},
+	'JavaKakugenIntent':function(){ // 格言
+		const tbl=require('./kakugen.json');
+		const k_id=Math.floor(Math.random()*tbl.length);
+		let kakugen=tbl[k_id].t;
+		this.response.cardRenderer(AppletName,kakugen);
+		this.response.speak(kakugen);
+		this.emit(':responseReady');
+	},
 	'AMAZON.HelpIntent':function(){
 		this.response.speak(HelpMessage);
 		this.emit(':ask');
