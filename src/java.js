@@ -1,6 +1,6 @@
 'use strict';
 const Alexa=require('alexa-sdk');
-const HelpMessage='ジャバして、言えば、ジャバと発音します。格言を言って、と言えば、ジャバに関する格言を言います。ジャバが走るデバイスの数を調べて、と言うと、推定デバイス数をお答えします。';
+const HelpMessage='ジャバして、と言えば、ジャバと発音します。格言を言って、と言えば、ジャバに関する格言を言います。ジャバが走るデバイスの数を調べて、と言うと、推定デバイス数をお答えします。';
 const AppletName='ジャバボタン';
 
 var handlers={
