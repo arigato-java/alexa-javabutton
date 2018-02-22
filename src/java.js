@@ -52,8 +52,7 @@ var handlers={
 		this.emit(':responseReady');
 	},
 	'AMAZON.HelpIntent':function(){
-		this.response.speak(HelpMessage);
-		this.emit(':ask');
+		this.emit(':tell',HelpMessage);
 	},
 	'AMAZON.CancelIntent':function(){
 		this.emit(':tell','やめるジャバ');
