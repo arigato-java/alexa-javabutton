@@ -1,11 +1,12 @@
 'use strict';
 const Alexa=require('alexa-sdk');
-const HelpMessage='例えば、30億回ジャバして、などと言ってください。';
+const HelpMessage='ジャバして、言えば、ジャバと発音します。格言を言って、と言えば、ジャバに関する格言を言います。ジャバが走るデバイスの数を調べて、と言うと、推定デバイス数をお答えします。';
 const AppletName='ジャバボタン';
 
 var handlers={
 	'LaunchRequest':function(){
-		this.emit(':ask','あなたとジャバ、今すぐダウンロード',HelpMessage);
+		let askMessage=HelpMessage+'何をしますか？';
+		this.emit(':ask','あなたとジャバ、今すぐダウンロード。'+askMessage,askMessage);
 	},
 	'JavaIntent':function(){
 		var javaCount=0;
