@@ -56,10 +56,10 @@ var handlers={
 		this.emit(':tell',HelpMessage);
 	},
 	'AMAZON.CancelIntent':function(){
-		this.emit(':tell','やめるジャバ');
+		this.emit(':tell','さようなら、ジャバ。');
 	},
 	'AMAZON.StopIntent':function(){
-		this.emit(':tell','コボルのように死んだ言語。ジャバは置き換えられる時期に来ているのか。');
+		this.emit(':tell','さようなら、ジャバ。');
 	},
 	'Unhandled':function(){
 		this.emit(':ask',HelpMessage,HelpMessage);

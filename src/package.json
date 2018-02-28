@@ -14,5 +14,9 @@
   "dependencies": {
     "alexa-sdk": "^1.0.19"
   },
-  "repository":"https://github.com/arigato-java/alexa-javabutton.git"
+  "devDependencies": {
+    "alexa-skill-test-framework": "^1.1.4",
+    "mocha": "^5.0.1"
+  },
+  "repository": "https://github.com/arigato-java/alexa-javabutton.git"
 }
