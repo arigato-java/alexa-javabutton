@@ -6,12 +6,12 @@ jobs:
       - image:circleci/node:6
     steps:
       - checkout
-      - restore_cache
+      - restore_cache:
           key: dep-cache-{{checksum "src/package.json"}}
       - run:
           name: NPM Update
           command: cd src/ && npm update
-      - save_cache
+      - save_cache:
           key: dep-cache-{{checksum "src/package.json"}}
       - run:
           name: run test
