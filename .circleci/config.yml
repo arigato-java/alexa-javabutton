@@ -16,6 +16,9 @@ jobs:
           paths:
             - ./src/node_modules
       - run:
+          name: download kakugen
+          command: ./scripts/kakugen.sh
+      - run:
           name: run test
           command: cd src/ && npm test
 
