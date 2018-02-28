@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 SRC_PATH=`realpath \`dirname $0\`/../src`
 DIST_PATH=`realpath \`dirname $0\`/../dist`
 DIST_FILES="package.json java.js kakugen.json"
