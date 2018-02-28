@@ -1,0 +1,18 @@
+version:2
+jobs:
+  test:
+    working_directory:~/code
+    docker:
+      - image:circleci/node:6
+    steps:
+      - checkout
+      - restore_cache
+          key: dep-cache-{{checksum "src/package.json"}}
+      - run:
+          name: NPM Update
+          command: cd src/ && npm update
+      - save_cache
+          key: dep-cache-{{checksum "src/package.json"}}
+      - run:
+          name: run test
+          command: cd src/ && npm test

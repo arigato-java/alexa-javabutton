@@ -4,7 +4,7 @@
   "description": "Lambda function for Javabuttonized Alexa",
   "main": "java.js",
   "scripts": {
-    "test": "/bin/true"
+    "test": "./node_modules/mocha/bin/mocha testbench_java.js"
   },
   "keywords": [
     "Javabutton"
