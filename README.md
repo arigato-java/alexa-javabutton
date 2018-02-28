@@ -1,5 +1,7 @@
 # アレクサ、あなたとジャバ
 
+[![CircleCI](https://circleci.com/gh/arigato-java/alexa-javabutton.svg?style=svg)](https://circleci.com/gh/arigato-java/alexa-javabutton)
+
 > アレクサ、ジャバボタンでジャバして
 
 > アレクサ、ジャバボタンで5回ジャバして
