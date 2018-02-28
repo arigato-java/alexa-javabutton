@@ -13,6 +13,8 @@ jobs:
           command: cd src/ && npm update
       - save_cache:
           key: dep-cache-{{checksum "src/package.json"}}
+          paths:
+            - ./src/node_modules
       - run:
           name: run test
           command: cd src/ && npm test
