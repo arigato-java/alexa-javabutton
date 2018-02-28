@@ -6,9 +6,79 @@ alexaTest.initialize(
 alexaTest.initializeI18N({});
 alexaTest.setLocale("ja-JP");
 
-describe("AMAZON.HelpIntent",function(){
+function printResponse(context,utterance){
+	console.log(utterance);
+}
+
+describe("LaunchRequest and CancelIntent",function(){
 	alexaTest.test([
-		{ request: alexaTest.getIntentRequest("AMAZON.HelpIntent"), shouldEndSession: true },
+		{ request: alexaTest.getLaunchRequest(), shouldEndSession: false, repromptNothing:false,
+		  saysCallback: printResponse },
+		{ request: alexaTest.getIntentRequest('AMAZON.CancelIntent'), shouldEndSession:true,
+		  saysCallback: printResponse }
 	]);
 });
+
+describe("LaunchRequest and StopIntent",function(){
+	alexaTest.test([
+		{ request: alexaTest.getLaunchRequest(), shouldEndSession: false, repromptNothing:false,
+		  saysCallback: printResponse },
+		{ request: alexaTest.getIntentRequest('AMAZON.StopIntent'), shouldEndSession:true,
+		  saysCallback: printResponse }
+	]);
+});
+
+describe("AMAZON.HelpIntent",function(){
+	alexaTest.test([
+		{ request: alexaTest.getIntentRequest("AMAZON.HelpIntent"), shouldEndSession: true,
+		  saysCallback: printResponse }
+	]);
+});
+
+describe("JavaIntent without count",function(){
+	alexaTest.test([
+		{ request: alexaTest.getIntentRequest('JavaIntent'), shouldEndSession: true,
+		  saysCallback: printResponse }
+	]);
+});
+
+describe("JavaIntent without count",function(){
+	alexaTest.test([
+		{ request: alexaTest.getIntentRequest('JavaIntent'), shouldEndSession: true,
+		  saysCallback: printResponse }
+	]);
+});
+
+describe('JavaIntent with small count',function(){
+	let slot={'Javacount':8};
+	let requestWithSlot=alexaTest.getIntentRequest('JavaIntent',slot);
+	alexaTest.test([
+		{ request: requestWithSlot, shouldEndSession: true,
+		  saysCallback: printResponse }
+	]);
+});
+
+describe('JavaIntent with huge count',function(){
+	let slot={'Javacount':3000000};
+	let requestWithSlot=alexaTest.getIntentRequest('JavaIntent',slot);
+	alexaTest.test([
+		{ request: requestWithSlot, shouldEndSession: true,
+		  saysCallback: printResponse }
+	]);
+});
+
+describe('JavaCountIntent',function(){
+	alexaTest.test([
+		{ request: alexaTest.getIntentRequest('JavaCountIntent'), shouldEndSession: true,
+		  saysCallback: printResponse }
+	]);
+});
+
+describe('JavaKakugenIntent',function(){
+	alexaTest.test([
+		{ request: alexaTest.getIntentRequest('JavaKakugenIntent'), shouldEndSession: true,
+		  saysCallback: printResponse }
+	]);
+});
+
 
