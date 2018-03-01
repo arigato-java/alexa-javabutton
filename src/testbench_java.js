@@ -30,7 +30,7 @@ describe("LaunchRequest and StopIntent",function(){
 
 describe("AMAZON.HelpIntent",function(){
 	alexaTest.test([
-		{ request: alexaTest.getIntentRequest("AMAZON.HelpIntent"), shouldEndSession: true,
+		{ request: alexaTest.getIntentRequest("AMAZON.HelpIntent"), shouldEndSession: false,
 		  saysCallback: printResponse }
 	]);
 });
