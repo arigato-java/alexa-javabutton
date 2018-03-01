@@ -1,12 +1,11 @@
 'use strict';
 const Alexa=require('alexa-sdk');
-const HelpMessage='ジャバして、と言えば、ジャバと発音します。格言を言って、と言えば、ジャバに関する格言を言います。ジャバが走るデバイスの数を調べて、と言うと、推定デバイス数をお答えします。';
+const HelpMessage='ジャバして、と言えば、ジャバと発音します。格言を言って、と言えば、ジャバに関する格言を言います。ジャバが走るデバイスの数を調べて、と言うと、推定デバイス数をお答えします。何をしますか？';
 const AppletName='ジャバボタン';
 
 var handlers={
 	'LaunchRequest':function(){
-		let askMessage=HelpMessage+'何をしますか？';
-		this.emit(':ask','あなたとジャバ、今すぐダウンロード。'+askMessage,askMessage);
+		this.emit(':ask','あなたとジャバ。'+HelpMessage,HelpMessage);
 	},
 	'JavaIntent':function(){
 		var javaCount=0;
@@ -53,16 +52,13 @@ var handlers={
 		this.emit(':responseReady');
 	},
 	'AMAZON.HelpIntent':function(){
-		this.emit(':tell',HelpMessage);
+		this.emit(':ask',HelpMessage,HelpMessage);
 	},
 	'AMAZON.CancelIntent':function(){
 		this.emit(':tell','さようなら、ジャバ。');
 	},
 	'AMAZON.StopIntent':function(){
 		this.emit(':tell','さようなら、ジャバ。');
-	},
-	'Unhandled':function(){
-		this.emit(':ask',HelpMessage,HelpMessage);
 	}
 };
 exports.handler=function(event,context,callback){
