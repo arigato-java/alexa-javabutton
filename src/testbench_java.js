@@ -28,6 +28,15 @@ describe("LaunchRequest and StopIntent",function(){
 	]);
 });
 
+describe("LaunchRequest and SessionEndedRequest",function(){
+	alexaTest.test([
+		{ request: alexaTest.getLaunchRequest(), shouldEndSession: false, repromptNothing:false,
+		  saysCallback: printResponse },
+		{ request: alexaTest.getSessionEndedRequest('USER_INITIATED'), shouldEndSession:true,
+		  saysCallback: printResponse }
+	]);
+});
+
 describe("AMAZON.HelpIntent",function(){
 	alexaTest.test([
 		{ request: alexaTest.getIntentRequest("AMAZON.HelpIntent"), shouldEndSession: false,
@@ -35,16 +44,9 @@ describe("AMAZON.HelpIntent",function(){
 	]);
 });
 
-describe("JavaIntent without count",function(){
+describe("SingleJavaIntent",function(){
 	alexaTest.test([
-		{ request: alexaTest.getIntentRequest('JavaIntent'), shouldEndSession: true,
-		  saysCallback: printResponse }
-	]);
-});
-
-describe("JavaIntent without count",function(){
-	alexaTest.test([
-		{ request: alexaTest.getIntentRequest('JavaIntent'), shouldEndSession: true,
+		{ request: alexaTest.getIntentRequest('SingleJavaIntent'), shouldEndSession: true,
 		  saysCallback: printResponse }
 	]);
 });
@@ -63,6 +65,15 @@ describe('JavaIntent with huge count',function(){
 	let requestWithSlot=alexaTest.getIntentRequest('JavaIntent',slot);
 	alexaTest.test([
 		{ request: requestWithSlot, shouldEndSession: true,
+		  saysCallback: printResponse }
+	]);
+});
+
+describe('JavaIntent with invalid count',function(){
+	let slot={'Javacount':'?'};
+	let requestWithSlot=alexaTest.getIntentRequest('JavaIntent',slot);
+	alexaTest.test([
+		{ request: requestWithSlot, shouldEndSession: false,
 		  saysCallback: printResponse }
 	]);
 });

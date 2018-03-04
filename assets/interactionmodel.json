@@ -14,12 +14,17 @@
         "samples": []
       },
       {
-        "name": "JavaIntent",
+        "name": "SingleJavaIntent",
         "samples": [
           "ジャバ",
           "ジャバして",
 	  "ダウンロード",
-          "ダウンロードして",
+          "ダウンロードして"
+	]
+      },
+      {
+        "name": "JavaIntent",
+        "samples": [
 	  "{Javacount} 回ジャバ",
 	  "{Javacount} 回ジャバして",
 	  "{Javacount} 回ダウンロード",

@@ -1,30 +1,38 @@
 'use strict';
 const Alexa=require('alexa-sdk');
 const HelpMessage='ジャバして、と言えば、ジャバと発音します。格言を言って、と言えば、ジャバに関する格言を言います。ジャバが走るデバイスの数を調べて、と言うと、推定デバイス数をお答えします。何をしますか？';
+const ByeMessage='さようなら、ジャバ。';
 const AppletName='ジャバボタン';
 
 var handlers={
 	'LaunchRequest':function(){
-		this.emit(':ask','あなたとジャバ。'+HelpMessage,HelpMessage);
+		this.emit(':ask','あなたとジャバにようこそ。'+HelpMessage,HelpMessage);
 	},
-	'JavaIntent':function(){
-		var javaCount=0;
-		try{
-			javaCount=this.event.request.intent.slots.Javacount.value;
-		}catch(ignored){}
-		var utter=[];
-		if(javaCount && 10<javaCount){
-			utter.push(javaCount+'のデバイスで走るジャバ');
-		}else{
-			if(!javaCount){javaCount=1;}
-			for(var i=0;i<javaCount;i++){
-				utter.push('ジャバ');
-			}
-		}
-		var res=utter.join('、')+'。';
+	'SingleJavaIntent':function(){
+		var res='ジャバ。';
 		this.response.cardRenderer(AppletName,res);
 		this.response.speak(res);
 		this.emit(':responseReady');
+	},
+	'JavaIntent':function(){
+		var javaCount=Number(this.event.request.intent.slots.Javacount.value);
+		if(!Number.isInteger(javaCount) || javaCount<=0){
+			this.emit(':ask','わからないジャバ。複数回ジャバするには、五回ジャバして、のように言ってください。どうしますか？');
+		}else{
+			var utter=[];
+			if(javaCount && 10<javaCount){
+				utter.push(javaCount+'のデバイスで走るジャバ');
+			}else{
+				if(!javaCount){javaCount=1;}
+				for(var i=0;i<javaCount;i++){
+					utter.push('ジャバ');
+				}
+			}
+			var res=utter.join('、')+'。';
+			this.response.cardRenderer(AppletName,res);
+			this.response.speak(res);
+			this.emit(':responseReady');
+		}
 	},
 	'JavaCountIntent':function(){	// ジャバが動くデバイスの数
 		const atTime=Date.now();
@@ -55,10 +63,13 @@ var handlers={
 		this.emit(':ask',HelpMessage,HelpMessage);
 	},
 	'AMAZON.CancelIntent':function(){
-		this.emit(':tell','さようなら、ジャバ。');
+		this.emit(':tell',ByeMessage);
 	},
 	'AMAZON.StopIntent':function(){
-		this.emit(':tell','さようなら、ジャバ。');
+		this.emit(':tell',ByeMessage);
+	},
+	'Unhandled':function(){
+		this.emit(':tell','わからないジャバ。');
 	}
 };
 exports.handler=function(event,context,callback){
