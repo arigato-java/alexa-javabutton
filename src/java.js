@@ -3,6 +3,13 @@ const Alexa=require('alexa-sdk');
 const HelpMessage='ジャバして、と言えば、ジャバと発音します。格言を言って、と言えば、ジャバに関する格言を言います。ジャバが走るデバイスの数を調べて、と言うと、推定デバイス数をお答えします。何をしますか？';
 const ByeMessage='さようなら、ジャバ。';
 const AppletName='ジャバボタン';
+// 審査対応　当局による検閲。　格言のブラックリスト
+const KakugenBlacklist=new Set([
+	"ea968cf58d7700ca2ecaafda932c3f7d0ffef99e30a047c8ee111bc804340c8d",
+	"48f26d4e815c74a10ee471c04677123ca41dbd24e3e9cd9f388e5e17fbe395c6",
+	"0eadad98665b6c3d6a177f4f6001c0f1b2fbff3db8a4052c08a1e739d8b6a807",
+	"285d3ccdd9bf477eec1abf8d4f148dd5c17bbd99deaf2fdfe14af54bef0b622e"
+]);
 
 var handlers={
 	'LaunchRequest':function(){
@@ -55,6 +62,15 @@ var handlers={
 		const tbl=require('./kakugen.json');
 		const k_id=Math.floor(Math.random()*tbl.length);
 		let kakugen=tbl[k_id].t;
+		// ブラックリスト処理
+		var crypto=require('crypto');
+		var hash=crypto.createHash('sha256');
+		hash.update(kakugen);
+		var hash_hex=hash.digest('hex');
+		if(KakugenBlacklist.has(hash_hex)){
+			kakugen='ノットジャバ';
+		}
+		// ブラックリスト処理　おわり
 		this.response.cardRenderer(AppletName,kakugen);
 		this.response.speak(kakugen);
 		this.emit(':responseReady');
