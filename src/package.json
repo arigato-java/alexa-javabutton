@@ -12,7 +12,8 @@
   "author": "The Java Brigade",
   "license": "Glide",
   "dependencies": {
-    "alexa-sdk": "^1.0.19"
+    "alexa-sdk": "^1.0.19",
+    "emoji-regex": "^6.5.1"
   },
   "devDependencies": {
     "mocha": "^3.2.0",
