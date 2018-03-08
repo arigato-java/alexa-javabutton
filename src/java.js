@@ -22,7 +22,7 @@ const KakugenBlacklist=new Set([
 ]);
 
 function KakugenAmazonify(kakugen){
-	const emojiRegex=require('emoji-regex/es2015/text.js');
+	const emojiRegex=require('emoji-regex/es2015/index.js');
 	const emojis=emojiRegex();
 	let amzn1=kakugen.replace(/ダウンロード?/g,'ド');
 	let amzn2=amzn1.replace(/[?？｜]/g,'。');
