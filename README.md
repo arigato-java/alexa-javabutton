@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/arigato-java/alexa-javabutton.svg?style=svg)](https://circleci.com/gh/arigato-java/alexa-javabutton)
 
+[Amazonのスキルページ](https://www.amazon.co.jp/dp/B079Q1DHGL/)
+
 > アレクサ、ジャバボタンでジャバして
 
 > アレクサ、ジャバボタンで5回ジャバして
