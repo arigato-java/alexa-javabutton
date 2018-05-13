@@ -10,7 +10,7 @@ jobs:
           key: dep-cache-{{checksum "src/package.json"}}
       - run:
           name: NPM Update
-          command: cd src/ && npm update
+          command: cd src/ && npm i
       - save_cache:
           key: dep-cache-{{checksum "src/package.json"}}
           paths:
